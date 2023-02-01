@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./styles.css" />
+		<title>Candy Crush</title>
+		<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+		<script>
+			$(document).ready(function () {
+				// Hide cell on click
+				$('.cell').click(function () {
+					const currentCell = $(this);
+					const currentCellIndex = currentCell.index();
+					const currentRow = currentCell.parent();
+					const currentRowIndex = currentRow.index();
+
+					// Get the cell to the right
+					if (currentCellIndex < currentRow.children().length - 1) {
+						let nextCell = currentRow.children().eq(currentCellIndex + 1);
+						currentCell.hide();
+						nextCell.insertBefore(currentCell);
+					}
+
+					// Get the cell below
+					if (currentRowIndex < $('.row').length - 1) {
+						var nextRow = $('.row').eq(currentRowIndex + 1);
+						var nextCell = nextRow.children().eq(currentCellIndex);
+						currentCell.hide();
+					}
+				});
+
+				// Reset the game on click
+				$('#resetButton').click(function (e) {
+					e.preventDefault();
+					$('.cell').show();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="game">
+			<ul class="row">
+				<li class="cell"><img src="./candy-crush-resources/multicolor_candy.png" alt="image 1" /></li>
+				<li class="cell"><img src="./candy-crush-resources/orange_candy.png" alt="image 2" /></li>
+				<li class="cell"><img src="./candy-crush-resources/red_candy.png" alt="image 3" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 4" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 5" /></li>
+				<li class="cell"><img src="./candy-crush-resources/red_candy.png" alt="image 6" /></li>
+				<li class="cell"><img src="./candy-crush-resources/multicolor_candy.png" alt="image 7" /></li>
+				<li class="cell"><img src="./candy-crush-resources/orange_candy.png" alt="image 8" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 9" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 10" /></li>
+				<li class="cell"><img src="./candy-crush-resources/red_candy.png" alt="image 11" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 12" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 13" /></li>
+				<li class="cell"><img src="./candy-crush-resources/red_candy.png" alt="image 14" /></li>
+				<li class="cell"><img src="./candy-crush-resources/multicolor_candy.png" alt="image 15" /></li>
+				<li class="cell"><img src="./candy-crush-resources/multicolor_candy.png" alt="image 16" /></li>
+				<li class="cell"><img src="./candy-crush-resources/orange_candy.png" alt="image 16" /></li>
+				<li class="cell"><img src="./candy-crush-resources/red_candy.png" alt="image 17" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 18" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 19" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 20" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 21" /></li>
+				<li class="cell"><img src="./candy-crush-resources/red_candy.png" alt="image 22" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 23" /></li>
+				<li class="cell"><img src="./candy-crush-resources/yellow_candy.png" alt="image 24" /></li>
+			</ul>
+		</div>
+		<button id="resetButton">Reset Game</button>
+	</body>
+</html>
